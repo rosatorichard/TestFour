@@ -1,0 +1,157 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.15063}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 1. A content provider is a service outside the application that you access for data.\par
+\par
+2. Yes a databse can have multiple content providers.\line\par
+3. You would access a content provider by using a Cursor to go into the specific database of information. such as when we did this for the phone application we created a cursor for name. we identified the content provider we wished to use and then made a query on that database.\par
+\par
+4. A system content provider is a content provider that is within the base system such as Contacts for the phone application.\par
+\par
+5. you need to get the URI of the content you wish to grab. create a cursor that is connected to the specific Content provider you want to enter , make the qeuery on the content provider and then manage the data afterwards.  The classes that are needed are the ones you get from parsing the json into java classes that are used for making queries such as the Github queries we did using the profile name selection.\par
+\par
+6. query(*URI*,*projection*,*selection*,*selectionArgs*,null)\par
+\par
+7.projection : \par
+selection: used as the logic for the query such as getting a phone number where it is equal to selectionargs. \par
+selectionargs: the identifier used for the selection such as contactName\par
+\par
+8.To get a phone number from a device you first create a cursor connected to ContactsContract.contacts and grab the contacts from the phone using the URI of the contacts as the query like this. query(PHONE_URI,null,null,null,null) then after you have the contact you then create a new Cursor for looking at phone NUmbers. using this cursor you specificy with a query what you want to grab from the phone like this.  \par
+query(PHONE_URI, projection,Selection, selectionargs,null). \par
+this will give you the number at the contact . also you can get multiple numbers by checking phoneCursor.hasnext which when using a while loop will continue to grab numbers till you have recieved every number from a specific contact which to grab it you will get from the contentResults.body.get(i).*phonenumber*\par
+\par
+9. you create a custom contentProvider by making a databse of whatever you want.\par
+\par
+10. yes\par
+\par
+11.A web service is a service that is from the internet. such as making a query on github. or the weather service.\par
+\par
+12. retrofit, OKHTTP, HTTP\par
+\par
+13. You can make a rest call using HTTP. \par
+\par
+14. You cant make a network call on the main thread. it will throw an exception since it must be done off of the main thread.\par
+\par
+15. you send a request for a website using the uri. with this you send a request to a specific website api to return information back to be used for searching.\par
+\par
+16.\par
+\par
+17.you make a query on OKHTTP by setting up a query for the HTML. \par
+\par
+18. Retrofit is similar to OKHTTP and is a third party library. you set up RetrofitHelper by creating a helper class that is used as a thread for when retrofit is doing its calls.\par
+\par
+19. ???\par
+\par
+20. You can parse json inside postman or other web services. \par
+\par
+21.\par
+\par
+22. yes. ???\par
+\par
+23. ???\par
+\par
+24. MVP is MODEL VIEW PRESENTER. You set this up by creating new packages and seperating views from presenters and pojos.  this is a type of setup to make code easier to read and to decouple the code. once set up you will have a baseView, BasePresenter, MainActivityComponent, MainActivityModule, MainActivity, MainActivityContract, MainActivityPresenter. You will recreate this for every Activity except for the BaseView and BasePresenter which are used throughout all activities in you application.\par
+\par
+25. Yes MVP is better than MVC. It is better because it allows fro easier understanding of code as well as decoupling of code. Since we can decouple the code and make all computations off of the main Activity this allows us to track whats going on easier. such as every time the MainActivity needs something done it must be in the presenter or another class such as an adapter or service.\par
+\par
+26. Dagger is used for MVP and helps with setup and injection. \par
+\par
+27. To set up dagger. You need to first get the compile for dagger2 for your gradle file. once that is there you need to create your dagger injector module and Component for use in your activites. once you create your activites you need to use the Dagger class for the injection. which you will do @Inject MainActivityComponent which will attach to the module and connect all of your classes for MVP.\par
+\par
+28. You have to call for the injection the rebuild the project.\par
+\par
+29. A runtime permission is where you ask the user for permission to do an action in your application for dangerous permissions. this was introduced in API23. it was introduced because of download time. before it qasked you before you downloaded and it was causing more time to be used for download when eveyone accepts them anyways roughly 95%. so now runtime permissions are done so that permissions are not asked when installing an application.\par
+\par
+30. Normal permissions are permissions that are not considered dangerous ones. dangerours permission are permissions that have impact on your device such as GPS. You must ask for the permission to use it since it uses other services on your device.\par
+\par
+31. You create a statement that runs at the start of any call to use a permission that is considered dangerous. this will bring up an AlertDialog box asking the user if the application is allowed to run this code. If the code is allowed the permission will be set to true and will run if not this part of the application will not work and often times is designed to disapear from an app since functionality will not be there in the app.\par
+\par
+32. The callback is a response oof allow or not allow. This callback is then used to parse if the permission was accepted. if it was then it will run one part of the code if not it will run the other.\par
+\par
+33. You need to send a request code because you want to get a response for the specific permission. you dont want to just parse any accept you want to parse the accept for the right code.\par
+\par
+34. This shows what the current Permission is. \par
+\par
+35. You can ask for multiple permissions at once by adding lines to your code in the string for asking. such as String[] \{"firstRequest","secondRequest"\}\par
+\par
+36. To use google play services lib in your ap you need to get a Key. To get a key you need to go online and regester your application with google to recieve a key for your project to use.\par
+\par
+37. To access a device location you need to ask for GSP permission from the device for fine and coarse location. The difference is that the fine location is a more specific location while coarse location is an area around the location is it not as specific.\par
+\par
+38. GPS location permissions.\par
+\par
+39. Geo*something* i used tab complete D:\par
+\par
+40. you ask for the location from the updates location and set the coordinent that way. \par
+\par
+41. you can get frequent requests by sending a command to the gps and tell it to send requests at specific intervals. such as setting it up for every second using miliseconds. i dont remember the whole commmand but it takes atleast three arguments.\par
+\par
+42. Update location , State of Location, ???\par
+\par
+43. parcelable\par
+\par
+44. You create a google maps Activity and get the api code from google maps. \par
+\par
+45. The callback that updates the map is ???\par
+\par
+46. You add a marker by setting a location with a specific coordinatn. You do this as a the mpa is created by doing map.add(*lat,long,name*)\par
+\par
+47. you can make the map go to a different location by redrawing the map once you change the location.\par
+\par
+48. You set the current location to true. theres a few commands for map that can be used.\par
+\par
+49. OnStatusChanged is used for checking if you are in service. whihc is either available, unavailable, or disabled.\par
+\par
+Test Question List:\par
+\par
+1. What is a content provider?\par
+2. Can a database have multiple content providers?\par
+3. How would your access a content provider?\par
+4. What is a system content provider?\par
+5. Explain the flow of grabbing content from a content provider? What other classes?\par
+6. How to query data from a content provider?\par
+7. What are projection, selection arguments, selection?\par
+8. How to get a phone number from a device? Explain the flow?\par
+9. How can you make your own content provider?\par
+10. Does a custom content provider needs to be declared in the manifest?\par
+11. What is a web service? Name some.\par
+12. What are the verbs used in REST service?\par
+13. How can you make a REST call in Android without third party libs? Name the classes.\par
+14. What happens when you make a network call on the main thread? \par
+15. Explain how you can make a REST call using okhttp3?\par
+16. How can you make synchronous/asynchronous call using okhttp3?\par
+17. How to add headers/query parameters to a request in okhttp?\par
+18. What is Retrofit? How do you setup RetrofitHelper class?\par
+19. How can you use different verbs in Retrofit?\par
+20. What are the ways to transform JSON response to DataBean classes?\par
+21. How can we serialize a REST JSON response to the data bean classes?\par
+22. Can you add the serialization library to the Retrofit instance? How?\par
+23. How would you serialize a XML response to Data bean objects using Retrofit?\par
+24. What is MVP? How do you setup MVP?\par
+25. Is MVP better than MVC? Why? Explain the benefits of MVP.\par
+26. What is Dagger? What are the four components of Dagger?\par
+27. How do you setup Dagger? Explain the classes created.\par
+28. How do you create the object graph in Dagger?\par
+29. What are Runtime permissions? Which Android version introduced it? Why was this introduced?\par
+30. What are normal and dangerous permissions? Name some in each.\par
+31. How would you ask for permissions at runtime?\par
+32. What is the callback after the user responds to a permission?\par
+33. Why do we need to send a request code while asking for a permission?\par
+34. What does ActivityCompat.shouldShowRequestPermissionRationale do?\par
+35. How can you ask for multiple permissions at once?\par
+36. How to use Google Play Services lib in your app?\par
+37. What are the permissions you need to access a device location? What is the difference in both of them?\par
+38. Which permission group does the above permissions belong to?\par
+39. Which class is used to get the location on the device once?\par
+40. How to get the location using the above class?\par
+41. How can you get frequent location requests?\par
+42. What are the methods implemented in LocationListener interface?\par
+43. Is the Location class serializable or parcelable?\par
+44. How to setup a Google Maps in your app?\par
+45. What is the callback that updates the Map? How do you call that callback in the activity?\par
+46. How to add a marker in the map?\par
+47. How to animate a map to a different location?\par
+48. How to see current location (blue dot) in the map?\par
+49. What does the onStatusChanged used for? What are the arguments?\par
+\par
+}
+ 
